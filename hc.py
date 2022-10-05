@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 27 13:15:02 2019
-
-@author: juangabriel
-"""
-
 # Clustering Jerárquico
 
 # Importar las librerías
@@ -20,7 +12,7 @@ X = dataset.iloc[:, [3, 4]].values
 
 # Utilizar el dendrograma para encontrar el número óptimo de clusters
 import scipy.cluster.hierarchy as sch
-dendrogram = sch.dendrogram(sch.linkage(X, method = "ward"))        # linkage es para unir objetos y ward es para minimizar la varianza que existe entre los puntos del cluster
+dendrogram = sch.dendrogram(sch.linkage(X, method = "ward"))      
 plt.title("Dendrograma")
 plt.xlabel("Clientes")
 plt.ylabel("Distancia Euclídea")
@@ -29,9 +21,6 @@ plt.show()
 # Ajustar el clustetring jerárquico a nuestro conjunto de datos
 from sklearn.cluster import AgglomerativeClustering
 hc = AgglomerativeClustering(n_clusters = 5, affinity = "euclidean", linkage = "ward")      
-# n_clusters significa numero de closters
-# affinity significa distancia
-# linkage significa enlace de los objetos
 y_hc = hc.fit_predict(X)
 
 
